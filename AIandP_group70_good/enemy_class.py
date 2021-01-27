@@ -110,8 +110,6 @@ class Enemy:
                 break
             else:
                 neighbours = [[0, -1], [1, 0], [0, 1], [-1, 0]]
-                # if current not in visited:
-                #     visited.append(current)
                 for neighbour in neighbours:
                     if neighbour[0] + current.grid_pos[0] >= 0 and neighbour[0] + current.grid_pos[0] < len(grid[0]):
                         if neighbour[1] + current.grid_pos[1] >= 0 and neighbour[1] + current.grid_pos[1] < len(grid):
@@ -121,11 +119,8 @@ class Enemy:
                                 if grid[next_cell.grid_pos[1]][next_cell.grid_pos[0]] != 1:
                                     queue.append(next_cell)
                                     path.append({"Current": current, "Next": next_cell})
-                                    # gscore = self.manhattan_distance(next_cell, target)
-                                    # next_cell.get_score(gscore)
                                     bisect.insort(queue, next_cell)
 
-        # print("The number of visited nodes is: {}".format(len(visited)))
         shortest = [target]
         while target != start:
             for step in path:
